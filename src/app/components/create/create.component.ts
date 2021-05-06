@@ -1,15 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { Global } from 'src/app/services/global';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  providers: [UserService]
 })
 export class CreateComponent implements OnInit {
+  public user: User;
+  public url: string;
 
-  constructor() { }
+  constructor(
+    private _userService: UserService,
+    private _router: Router
+  ) {
+    this.url = Global.url;
+    this.user = new User('', '', '', '', '', '');
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form: any) {
+    console.log(this.user);
+    this._userService.saveUser(this.user).subscribe(
+      response => {
+        if (response.user) {
+          this._router.navigate(['users']);
+          /* Para mensajes de "Usuario creado" */
+          //this.save_user = response.user;
+          //this.status = 'success';
+        } else {
+          //this.status = 'failed';
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
 }

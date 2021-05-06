@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Global } from 'src/app/services/global';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,8 @@ export class UsersComponent implements OnInit {
   public url: string;
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _router: Router
   ) { 
     this.url = Global.url;
   }
@@ -34,6 +36,10 @@ export class UsersComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  createNewContact(): void {
+    this._router.navigate(["create"]);
   }
 
 }
