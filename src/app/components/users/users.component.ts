@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   public users: User[] = [];
+  public user: User;
   public url: string;
 
   constructor(
@@ -40,6 +41,24 @@ export class UsersComponent implements OnInit {
 
   createNewContact(): void {
     this._router.navigate(["create"]);
+  }
+
+  deleteContact(id) {
+    this.users.forEach(element => {
+      if (element.id == id) {
+        this.user = element;
+      }
+    });
+    this._userService.deleteUser(id).subscribe(
+      response => {
+        if (response) {
+          this.users = this.users.filter(u=>u!==this.user);
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
 }

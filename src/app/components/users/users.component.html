@@ -30,8 +30,8 @@
                         <td>{{ user.phoneNumber }}</td>
                         <td>{{ user.email }}</td>
                         <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger left-space">Delete</button>
+                            <button [routerLink]="['/edit', user.id]" class="btn btn-warning">Edit</button>
+                            <button (click)="deleteContact(user.id)" class="btn btn-danger left-space">Delete</button>
                         </td>
                     </tr>
                 </tbody>

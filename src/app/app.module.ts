@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreateComponent } from './components/create/create.component';
 import { ErrorComponent } from './components/error/error.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     CreateComponent,
-    ErrorComponent
+    ErrorComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

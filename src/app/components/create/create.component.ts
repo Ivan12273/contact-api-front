@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class CreateComponent implements OnInit {
   public user: User;
   public url: string;
+  public title: string;
 
   constructor(
     private _userService: UserService,
@@ -20,17 +21,17 @@ export class CreateComponent implements OnInit {
   ) {
     this.url = Global.url;
     this.user = new User('', '', '', '', '', '');
+    this.title = 'Create contact'
   }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: any) {
-    console.log(this.user);
     this._userService.saveUser(this.user).subscribe(
       response => {
-        if (response.user) {
-          this._router.navigate(['users']);
+        if (response) {
+          this._router.navigate(["users"]);
           /* Para mensajes de "Usuario creado" */
           //this.save_user = response.user;
           //this.status = 'success';
