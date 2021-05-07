@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users" class="text-center">
+                    <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: pageActual }" class="text-center">
                         <td>{{ user.id }}</td>
                         <td>{{ user.name }}</td>
                         <td>{{ user.lastName }}</td>
@@ -36,6 +36,7 @@
                     </tr>
                 </tbody>
             </table>
+            <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
         </div>
     </div>
 </div>
