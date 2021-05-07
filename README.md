@@ -64,7 +64,7 @@ This component is to show the user an error view in case they type an invalid ur
 
 ## Future updates
 There are many updates that I considered but at the end I couldn't implement them:
-- Filer by name and last name.
+- Filter by name and last name.
 - More complex validations, especially for the phone number input.
 - Make the site responsive for mobile devices.
 - A more attractive header and footer.
