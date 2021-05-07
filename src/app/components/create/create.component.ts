@@ -14,6 +14,8 @@ export class CreateComponent implements OnInit {
   public user: User;
   public url: string;
   public title: string;
+  public status: string;
+  public message: string;
 
   constructor(
     private _userService: UserService,
@@ -32,15 +34,12 @@ export class CreateComponent implements OnInit {
       response => {
         if (response) {
           this._router.navigate(["users"]);
-          /* Para mensajes de "Usuario creado" */
-          //this.save_user = response.user;
-          //this.status = 'success';
-        } else {
-          //this.status = 'failed';
-        }
+        } 
       },
       error => {
         console.log(<any>error);
+        this.status = 'failed';
+        this.message = error.error.message;
       }
     );
   }

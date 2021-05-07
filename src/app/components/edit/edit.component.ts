@@ -14,6 +14,8 @@ export class EditComponent implements OnInit {
   public user: User;
   public url: string;
   public title: string;
+  public status: string;
+  public message: string;
 
   constructor(
     private _userService: UserService,
@@ -46,16 +48,13 @@ export class EditComponent implements OnInit {
     this._userService.updateUser(this.user).subscribe(
       response => {
         if(response) {
-          /* Para mensajes de "Usuario editado" */
-          //this.save_user = response.user;
-          //this.status = 'success';
           this._router.navigate(['users']);
-        }else {
-          //this.status = 'failed';
         }
       },
       error => {
         console.log(<any>error);
+        this.status = 'failed';
+        this.message = error.error.message;
       }
     );
   }
