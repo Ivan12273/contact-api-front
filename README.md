@@ -71,3 +71,4 @@ There are many updates that I considered but at the end I couldn't implement the
 - Cleaner and more good looking error messages.
 - A success message when the user edited or created a new contact.
 - A confimation message when the user press the delete button.
+- Implement a more complex pagination functionality.
