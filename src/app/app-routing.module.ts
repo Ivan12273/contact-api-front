@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'create', component: CreateComponent},
   {path: 'edit/:id', component: EditComponent},
+  {path: 'search-results/:nameOrLastName', component: UsersComponent},
   {path: '**', component: ErrorComponent}
 ];
 

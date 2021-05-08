@@ -1,12 +1,32 @@
 <router-outlet></router-outlet>
 <div class="container">
-    <button class="btn btn-info" (click)="createNewContact()">Create new contact</button>
+    <div class="row">
+        <div class="col-md-auto">
+            <button class="btn btn-primary" (click)="createNewContact()">
+                Create new contact
+            </button>
+        </div>
+    
+        <div class="col">
+            <div class="input-group">
+                <div class="form-outline">
+                    <input type="text" class="form-control" #nameOrLastName placeholder="Name or last name">
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" (click)="searchContact(nameOrLastName.value)">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <br>
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Contacs</h3>
+            <h3>{{ title }}</h3>
         </div>
         <div class="card-body">
             <table class="table table-hover">
@@ -27,16 +47,19 @@
                         <td>{{ user.name }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.company }}</td>
-                        <td>{{ user.phoneNumber }}</td>
-                        <td>{{ user.email }}</td>
+                        <td><a href="tel:{{ user.phoneNumber }}">{{ user.phoneNumber }}</a></td>
+                        <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
                         <td>
-                            <button [routerLink]="['/edit', user.id]" class="btn btn-warning">Edit</button>
+                            <button [routerLink]="['/edit', user.id]" class="btn btn-secondary">Edit</button>
                             <button (click)="deleteContact(user.id)" class="btn btn-danger left-space">Delete</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+            <div class="text-center" *ngIf="returnToContacts == true">
+                <button class="btn btn-success" (click)="getUsers()">Return to contacts</button>
+            </div>
         </div>
     </div>
 </div>

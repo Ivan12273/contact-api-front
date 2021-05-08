@@ -37,6 +37,11 @@ export class UserService {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.put(this.url + 'user/' + user.id, params, {headers: headers});
     }
+
+    getUsersByNameOrLastName(nameOrLastName: string): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.get(this.url + 'user/search/' + nameOrLastName, {headers: headers});
+    }
     
     deleteUser(id: string): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
