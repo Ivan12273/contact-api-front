@@ -53,6 +53,7 @@ export class UsersComponent implements OnInit {
   }
 
   searchContact(nameOrLastName): void {
+    this.pageActual = 1;
     this.returnToContacts = true;
     this._userService.getUsersByNameOrLastName(nameOrLastName).subscribe(
       response => {
