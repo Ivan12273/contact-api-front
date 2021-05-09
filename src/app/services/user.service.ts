@@ -33,7 +33,6 @@ export class UserService {
 
     updateUser(user: User): Observable<any> {
         let params = JSON.stringify(user);
-        console.log(user);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.put(this.url + 'user/' + user.id, params, {headers: headers});
     }
